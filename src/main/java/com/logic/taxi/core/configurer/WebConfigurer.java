@@ -19,6 +19,7 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.NoHandlerFoundException;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import java.nio.charset.Charset;
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author 张瑶
+ * @author logic
  * @Description:
  * @time 2018/4/19 10:42
  */
@@ -146,5 +147,15 @@ public class WebConfigurer extends WebMvcConfigurationSupport {
     } catch (IOException ex) {
       LOGGER.error(ex.getMessage());
     }
+  }
+  @Override
+  public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    registry.addResourceHandler("swagger-ui.html")
+        .addResourceLocations("classpath:/META-INF/resources/");
+    registry.addResourceHandler("/webjars/**")
+        .addResourceLocations("classpath:/META-INF/resources/webjars/");
+    registry.addResourceHandler("/favicon.ico")
+        .addResourceLocations("classpath:/META-INF/resources/webjars/favicon.ico");
+    super.addResourceHandlers(registry);
   }
 }

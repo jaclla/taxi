@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 
 /**
- * @author 张瑶
+ * @author logic
  * @Description:
  * @time 2018/4/18 11:55
  */

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * @Description: 业务类异常
- * @author 张瑶
+ * @author logic
  * @date 2018/4/20 14:30
  *
  */

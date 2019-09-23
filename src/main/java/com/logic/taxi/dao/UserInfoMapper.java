@@ -4,7 +4,7 @@ import com.logic.taxi.model.UserInfo;
 import org.apache.ibatis.annotations.Param;
 
 /**
- * @author 张瑶
+ * @author logic
  * @Description:
  * @time 2018/4/18 11:54
  */

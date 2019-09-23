@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 /**
  * @ClassName: MybatisConfigurer
  * @Description: Mybatis配置
- * @author 张瑶
+ * @author logic
  * @date 2018年1月20日 下午4:03:46
  *
  */

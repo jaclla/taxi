@@ -2,7 +2,7 @@ package com.logic.taxi.core.ret;
 
 /**
  * @Description: 响应码枚举，参考HTTP状态码的语义
- * @author 张瑶
+ * @author logic
  * @date 2018/4/19 09:42
  */
 public enum RetCode {
