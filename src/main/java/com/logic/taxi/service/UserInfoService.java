@@ -1,7 +1,7 @@
 package com.logic.taxi.service;
 
 
-import com.logic.taxi.model.UserInfo;
+import com.logic.taxi.entity.UserInfo;
 
 /**
  * @author logic

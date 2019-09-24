@@ -2,7 +2,7 @@ package com.logic.taxi.controller;
 
 import com.logic.taxi.core.ret.RetResponse;
 import com.logic.taxi.core.ret.RetResult;
-import com.logic.taxi.model.UserInfo;
+import com.logic.taxi.entity.UserInfo;
 import com.logic.taxi.service.UserInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

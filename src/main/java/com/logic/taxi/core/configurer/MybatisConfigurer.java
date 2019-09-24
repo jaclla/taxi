@@ -1,6 +1,5 @@
 package com.logic.taxi.core.configurer;
 
-import java.util.Arrays;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
@@ -25,7 +24,7 @@ public class MybatisConfigurer {
 	public SqlSessionFactory sqlSessionFactoryBean(DataSource dataSource) throws Exception {
 		SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
 		factory.setDataSource(dataSource);
-		factory.setTypeAliasesPackage("com.logic.taxi.model");
+		factory.setTypeAliasesPackage("com.logic.taxi.entity");
 		// 添加XML目录
 		ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 		factory.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
@@ -36,7 +35,7 @@ public class MybatisConfigurer {
 	public MapperScannerConfigurer mapperScannerConfigurer() {
 		MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
 		mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactoryBean");
-		mapperScannerConfigurer.setBasePackage("com.logic.taxi.dao");
+		mapperScannerConfigurer.setBasePackage("com.logic.taxi.mapper");
 		return mapperScannerConfigurer;
 	}
 }

@@ -1,4 +1,4 @@
-package com.logic.taxi.model;
+package com.logic.taxi.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Id;

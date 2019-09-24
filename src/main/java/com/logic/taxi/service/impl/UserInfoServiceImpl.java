@@ -1,8 +1,8 @@
 package com.logic.taxi.service.impl;
 
 import com.logic.taxi.core.ret.ServiceException;
-import com.logic.taxi.dao.UserInfoMapper;
-import com.logic.taxi.model.UserInfo;
+import com.logic.taxi.mapper.UserInfoMapper;
+import com.logic.taxi.entity.UserInfo;
 import com.logic.taxi.service.UserInfoService;
 import org.springframework.stereotype.Service;
 

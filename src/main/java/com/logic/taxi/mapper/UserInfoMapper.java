@@ -1,6 +1,6 @@
-package com.logic.taxi.dao;
+package com.logic.taxi.mapper;
 
-import com.logic.taxi.model.UserInfo;
+import com.logic.taxi.entity.UserInfo;
 import org.apache.ibatis.annotations.Param;
 
 /**
