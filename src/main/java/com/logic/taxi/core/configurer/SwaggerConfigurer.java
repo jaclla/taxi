@@ -32,7 +32,7 @@ public class SwaggerConfigurer {
 
   private ApiInfo apiInfo() {
     return new ApiInfoBuilder()
-        .title("mySpringBoot 使用Swagger2构建RESTful APIs")
+        .title("logic 使用Swagger2构建RESTful APIs")
         .contact(new Contact("jaclla", "https://github.com/jaclla/taxi", null))
         .version("1.0")
         .build();
