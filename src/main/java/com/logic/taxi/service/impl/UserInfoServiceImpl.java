@@ -27,23 +27,31 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
     private UserInfoMapper userInfoMapper;
 
     @Override
-    public UserInfo selectById(Integer id){
+    public RetResult selectById(Integer id){
         UserInfo userInfo = userInfoMapper.selectById(id);
         if(userInfo == null){
             throw new ServiceException("暂无该用户");
         }
-        return userInfo;
+        return RetResponse.makeOKRsp(userInfo);
     }
 
     @Override
-    public List<UserInfo> selectList() {
+    public RetResult selectList() {
         List<UserInfo> userInfos = userInfoMapper.selectList(null);
-        return userInfos;
+        return RetResponse.makeOKRsp(userInfos);
     }
 
     @Override
-    public IPage<UserInfo> selectPage(Page<UserInfo> iPage) {
-        return userInfoMapper.selectPage(iPage, new QueryWrapper<>());
+    public RetResult selectPage(Page<UserInfo> iPage) {
+        return RetResponse.makeOKRsp(userInfoMapper.selectPage(iPage, new QueryWrapper<>()));
+    }
+
+    @Override
+    public RetResult insert(String name) {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUserName(name);
+        userInfoMapper.insert(userInfo);
+        return RetResponse.makeOKRsp();
     }
 
 

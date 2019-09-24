@@ -37,15 +37,13 @@ public class UserInfoController {
   })
   @GetMapping("/selectById")
   public RetResult<UserInfo> selectById(@RequestParam Integer id) {
-    UserInfo userInfo = userInfoService.selectById(id);
-    return RetResponse.makeOKRsp(userInfo);
+    return userInfoService.selectById(id);
   }
 
   @ApiOperation(value = "不分页查询用户", notes = "不分页查询用户列表")
   @GetMapping("/selectList")
   public RetResult selectList() {
-    List<UserInfo> userInfo = userInfoService.selectList();
-    return RetResponse.makeOKRsp(userInfo);
+    return userInfoService.selectList();
   }
 
   @ApiOperation(value = "分页查询用户", notes = "分页查询用户列表")
@@ -58,7 +56,15 @@ public class UserInfoController {
   @GetMapping("/selectPage")
   public RetResult selectPage(@RequestParam(defaultValue = "0") Integer page,
       @RequestParam(defaultValue = "0") Integer size) {
-    return RetResponse.makeOKRsp(userInfoService.selectPage(new Page<>(page, size)));
+    return userInfoService.selectPage(new Page<>(page, size));
+  }
+
+  @ApiOperation(value = "插入用户", notes = "插入一个用户")
+  @ApiImplicitParam(name = "name", value = "姓名",
+      dataType = "Integer", paramType = "query")
+  @PostMapping("/insert")
+  public RetResult insert(String name) {
+    return userInfoService.insert(name);
   }
 
 

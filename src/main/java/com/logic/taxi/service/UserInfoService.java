@@ -15,10 +15,11 @@ import java.util.List;
  */
 public interface UserInfoService extends IService<UserInfo> {
 
-    UserInfo selectById(Integer id);
+    RetResult selectById(Integer id);
 
-    List<UserInfo> selectList();
+    RetResult selectList();
 
-    IPage<UserInfo> selectPage(Page<UserInfo> iPage);
+    RetResult selectPage(Page<UserInfo> iPage);
 
+    RetResult insert(String name);
 }
