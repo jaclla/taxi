@@ -14,15 +14,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
-import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.NoHandlerFoundException;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,31 +27,31 @@ import java.util.List;
  * @time 2018/4/19 10:42
  */
 @Configuration
-public class WebConfigurer extends WebMvcConfigurationSupport {
+public class WebConfigurer {
 
   private final static Logger LOGGER = LoggerFactory.getLogger(WebConfigurer.class);
 
-  /**
-   * 修改自定义消息转换器
-   * @param converters
-   */
-  @Override
-  public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-    FastJsonHttpMessageConverter4 converter = new FastJsonHttpMessageConverter4();
-    converter.setSupportedMediaTypes(getSupportedMediaTypes());
-    FastJsonConfig config = new FastJsonConfig();
-    config.setSerializerFeatures(
-        // String null -> ""
-        SerializerFeature.WriteNullStringAsEmpty,
-        // Number null -> 0
-        SerializerFeature.WriteNullNumberAsZero,
-        //禁止循环引用
-        SerializerFeature.DisableCircularReferenceDetect
-    );
-    converter.setFastJsonConfig(config);
-    converter.setDefaultCharset(Charset.forName("UTF-8"));
-    converters.add(converter);
-  }
+//  /**
+//   * 修改自定义消息转换器
+//   * @param converters
+//   */
+//  @Override
+//  public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+//    FastJsonHttpMessageConverter4 converter = new FastJsonHttpMessageConverter4();
+//    converter.setSupportedMediaTypes(getSupportedMediaTypes());
+//    FastJsonConfig config = new FastJsonConfig();
+//    config.setSerializerFeatures(
+//        // String null -> ""
+//        SerializerFeature.WriteNullStringAsEmpty,
+//        // Number null -> 0
+//        SerializerFeature.WriteNullNumberAsZero,
+//        //禁止循环引用
+//        SerializerFeature.DisableCircularReferenceDetect
+//    );
+//    converter.setFastJsonConfig(config);
+//    converter.setDefaultCharset(Charset.forName("UTF-8"));
+//    converters.add(converter);
+//  }
 
   private List<MediaType> getSupportedMediaTypes() {
     List<MediaType> supportedMediaTypes = new ArrayList<>();
@@ -79,10 +74,10 @@ public class WebConfigurer extends WebMvcConfigurationSupport {
     supportedMediaTypes.add(MediaType.TEXT_XML);
     return supportedMediaTypes;
   }
-  @Override
-  public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> exceptionResolvers) {
-    exceptionResolvers.add(getHandlerExceptionResolver());
-  }
+//  @Override
+//  public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> exceptionResolvers) {
+//    exceptionResolvers.add(getHandlerExceptionResolver());
+//  }
 
   /**
    * 创建异常处理
@@ -148,14 +143,14 @@ public class WebConfigurer extends WebMvcConfigurationSupport {
       LOGGER.error(ex.getMessage());
     }
   }
-  @Override
-  public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    registry.addResourceHandler("swagger-ui.html")
-        .addResourceLocations("classpath:/META-INF/resources/");
-    registry.addResourceHandler("/webjars/**")
-        .addResourceLocations("classpath:/META-INF/resources/webjars/");
-    registry.addResourceHandler("/favicon.ico")
-        .addResourceLocations("classpath:/META-INF/resources/webjars/favicon.ico");
-    super.addResourceHandlers(registry);
-  }
+//  @Override
+//  public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//    registry.addResourceHandler("swagger-ui.html")
+//        .addResourceLocations("classpath:/META-INF/resources/");
+//    registry.addResourceHandler("/webjars/**")
+//        .addResourceLocations("classpath:/META-INF/resources/webjars/");
+//    registry.addResourceHandler("/favicon.ico")
+//        .addResourceLocations("classpath:/META-INF/resources/webjars/favicon.ico");
+//    super.addResourceHandlers(registry);
+//  }
 }
