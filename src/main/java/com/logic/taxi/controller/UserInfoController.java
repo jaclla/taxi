@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("userInfo")
+@RequestMapping("api")
 @Api(tags = {"用户操作接口"}, description = "userInfoControler")
 public class UserInfoController {
 

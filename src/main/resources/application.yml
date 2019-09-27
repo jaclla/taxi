@@ -9,7 +9,7 @@ spring:
     maxWait: 60000
     minEvictableIdleTimeMillis: 300000
     minIdle: 5
-    password: 123456
+    password: Cl16895789.
     poolPreparedStatements: true
     testOnBorrow: false
     testOnReturn: false
@@ -18,7 +18,6 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://localhost:3306/taxi?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&autoReconnect=true&failOverReadOnly=false
     username: root
-    validationQuery: SELECT 1 FROM DUAL
 mybatis-plus:
   mapper-locations: classpath*:com/logic/taxi/**/xml/*.xml
   type-aliases-package: com.logic.taxi.entity #实体扫描，多个package用逗号或者分号分隔
@@ -32,4 +31,5 @@ mybatis-plus:
     call-setters-on-nulls: true #map类型数据显示空值字段
 server:
   port: 8080
+
 
