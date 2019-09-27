@@ -113,11 +113,4 @@ public class BaseController {
         return Objects.requireNonNull(JWTUtil.getUserID(loginToken()));
     }
 
-//    /**
-//     * 当前登录者所属的企业ID
-//     */
-//    public Long loginEnterpriseID() {
-//        BizManager bizManager = new BizManager().selectById(loginID());
-//        return bizManager.getEnterpriseID();
-//    }
 }

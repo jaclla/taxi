@@ -1,7 +1,6 @@
 package com.logic.taxi.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.logic.taxi.core.ret.RetResponse;
 import com.logic.taxi.core.ret.RetResult;
 import com.logic.taxi.entity.UserInfo;
 import com.logic.taxi.service.UserInfoService;
@@ -9,7 +8,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("userInfo")
 @Api(tags = {"用户操作接口"}, description = "userInfoControler")
 public class UserInfoController {
 
@@ -66,6 +64,5 @@ public class UserInfoController {
   public RetResult insert(String name) {
     return userInfoService.insert(name);
   }
-
 
 }

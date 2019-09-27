@@ -9,7 +9,7 @@ spring:
     maxWait: 60000
     minEvictableIdleTimeMillis: 300000
     minIdle: 5
-    password: Cl16895789.
+    password: 123456
     poolPreparedStatements: true
     testOnBorrow: false
     testOnReturn: false
@@ -31,5 +31,7 @@ mybatis-plus:
     call-setters-on-nulls: true #map类型数据显示空值字段
 server:
   port: 8080
+  servlet:
+    context-path: /api
 
 

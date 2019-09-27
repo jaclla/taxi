@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logic.taxi.mapper.SysDictionaryItemMapper">
+  <resultMap id="BaseResultMap" type="com.logic.taxi.entity.SysDictionaryItem">
+    <!--@mbg.generated-->
+    <!--@Table sys_dictionary_item-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="typeID" jdbcType="INTEGER" property="typeid" />
+    <result column="itemName" jdbcType="VARCHAR" property="itemname" />
+    <result column="itemValue" jdbcType="VARCHAR" property="itemvalue" />
+    <result column="isLock" jdbcType="TINYINT" property="islock" />
+    <result column="orderNumber" jdbcType="TINYINT" property="ordernumber" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, typeID, itemName, itemValue, isLock, orderNumber
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from sys_dictionary_item
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from sys_dictionary_item
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.logic.taxi.entity.SysDictionaryItem" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into sys_dictionary_item (typeID, itemName, itemValue, 
+      isLock, orderNumber)
+    values (#{typeid,jdbcType=INTEGER}, #{itemname,jdbcType=VARCHAR}, #{itemvalue,jdbcType=VARCHAR}, 
+      #{islock,jdbcType=TINYINT}, #{ordernumber,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.logic.taxi.entity.SysDictionaryItem" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into sys_dictionary_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="typeid != null">
+        typeID,
+      </if>
+      <if test="itemname != null">
+        itemName,
+      </if>
+      <if test="itemvalue != null">
+        itemValue,
+      </if>
+      <if test="islock != null">
+        isLock,
+      </if>
+      <if test="ordernumber != null">
+        orderNumber,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="typeid != null">
+        #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="itemname != null">
+        #{itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="itemvalue != null">
+        #{itemvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="islock != null">
+        #{islock,jdbcType=TINYINT},
+      </if>
+      <if test="ordernumber != null">
+        #{ordernumber,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.logic.taxi.entity.SysDictionaryItem">
+    <!--@mbg.generated-->
+    update sys_dictionary_item
+    <set>
+      <if test="typeid != null">
+        typeID = #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="itemname != null">
+        itemName = #{itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="itemvalue != null">
+        itemValue = #{itemvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="islock != null">
+        isLock = #{islock,jdbcType=TINYINT},
+      </if>
+      <if test="ordernumber != null">
+        orderNumber = #{ordernumber,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.logic.taxi.entity.SysDictionaryItem">
+    <!--@mbg.generated-->
+    update sys_dictionary_item
+    set typeID = #{typeid,jdbcType=INTEGER},
+      itemName = #{itemname,jdbcType=VARCHAR},
+      itemValue = #{itemvalue,jdbcType=VARCHAR},
+      isLock = #{islock,jdbcType=TINYINT},
+      orderNumber = #{ordernumber,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

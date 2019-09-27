@@ -1,12 +1,10 @@
 package com.logic.taxi.service;
 
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.logic.taxi.core.ret.RetResult;
 import com.logic.taxi.entity.UserInfo;
-import java.util.List;
 
 /**
  * @author logic
@@ -15,11 +13,13 @@ import java.util.List;
  */
 public interface UserInfoService extends IService<UserInfo> {
 
-    RetResult selectById(Integer id);
+  RetResult selectById(Integer id);
 
-    RetResult selectList();
+  RetResult selectList();
 
-    RetResult selectPage(Page<UserInfo> iPage);
+  RetResult selectPage(Page<UserInfo> iPage);
 
-    RetResult insert(String name);
+  RetResult insert(String name);
+
+
 }

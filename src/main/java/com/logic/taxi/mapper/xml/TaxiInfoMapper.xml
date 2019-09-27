@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logic.taxi.mapper.TaxiInfoMapper">
+  <resultMap id="BaseResultMap" type="com.logic.taxi.entity.TaxiInfo">
+    <!--@mbg.generated-->
+    <!--@Table taxi_info-->
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="server_type" jdbcType="TINYINT" property="serverType" />
+    <result column="region" jdbcType="INTEGER" property="region" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="subscriptionDate" jdbcType="INTEGER" property="subscriptiondate" />
+    <result column="secrecyLabel" jdbcType="INTEGER" property="secrecylabel" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="emial" jdbcType="VARCHAR" property="emial" />
+    <result column="wechat" jdbcType="VARCHAR" property="wechat" />
+  </resultMap>
+  <insert id="insert" parameterType="com.logic.taxi.entity.TaxiInfo">
+    <!--@mbg.generated-->
+    insert into taxi_info (id, `type`, server_type, 
+      region, price, subscriptionDate, 
+      secrecyLabel, description, emial, 
+      wechat)
+    values (#{id,jdbcType=BIGINT}, #{type,jdbcType=TINYINT}, #{serverType,jdbcType=TINYINT}, 
+      #{region,jdbcType=INTEGER}, #{price,jdbcType=INTEGER}, #{subscriptiondate,jdbcType=INTEGER}, 
+      #{secrecylabel,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{emial,jdbcType=VARCHAR}, 
+      #{wechat,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.logic.taxi.entity.TaxiInfo">
+    <!--@mbg.generated-->
+    insert into taxi_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="serverType != null">
+        server_type,
+      </if>
+      <if test="region != null">
+        region,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="subscriptiondate != null">
+        subscriptionDate,
+      </if>
+      <if test="secrecylabel != null">
+        secrecyLabel,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="emial != null">
+        emial,
+      </if>
+      <if test="wechat != null">
+        wechat,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="serverType != null">
+        #{serverType,jdbcType=TINYINT},
+      </if>
+      <if test="region != null">
+        #{region,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="subscriptiondate != null">
+        #{subscriptiondate,jdbcType=INTEGER},
+      </if>
+      <if test="secrecylabel != null">
+        #{secrecylabel,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="emial != null">
+        #{emial,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null">
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
