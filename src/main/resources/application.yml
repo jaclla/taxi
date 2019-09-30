@@ -1,23 +1,14 @@
 spring:
   datasource:
-    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-    driverClassName: com.mysql.cj.jdbc.Driver
-    filters: stat,wall,slf4j
-    initialSize: 5
-    maxActive: 20
-    maxPoolPreparedStatementPerConnectionSize: 20
-    maxWait: 60000
-    minEvictableIdleTimeMillis: 300000
-    minIdle: 5
-    password: 123456
-    poolPreparedStatements: true
-    testOnBorrow: false
-    testOnReturn: false
-    testWhileIdle: true
-    timeBetweenEvictionRunsMillis: 60000
-    type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://localhost:3306/taxi?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&autoReconnect=true&failOverReadOnly=false
+    url: jdbc:mysql://localhost:3306/taxi?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&tinyInt1isBit=false&useLegacyDatetimeCode=false
     username: root
+    password: Cl16895789.
+    hikari: # https://github.com/brettwooldridge/HikariCP (uses milliseconds for all time values)
+      maximumPoolSize: 10
+      minimumIdle: 2
+      idleTimeout: 600000
+      connectionTimeout: 30000
+      maxLifetime: 1800000
 mybatis-plus:
   mapper-locations: classpath*:com/logic/taxi/**/xml/*.xml
   type-aliases-package: com.logic.taxi.entity #实体扫描，多个package用逗号或者分号分隔
@@ -31,7 +22,3 @@ mybatis-plus:
     call-setters-on-nulls: true #map类型数据显示空值字段
 server:
   port: 8080
-  servlet:
-    context-path: /api
-
-

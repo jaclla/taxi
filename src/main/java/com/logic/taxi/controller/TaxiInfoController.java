@@ -60,8 +60,11 @@ public class TaxiInfoController {
   @PostMapping("/selectPage")
   public RetResult selectPage(Boolean type, @RequestParam(defaultValue = "0") Integer page,
       @RequestParam(defaultValue = "0") Integer size) {
-    return taxiInfoService.selectPage(type,new Page<>(page, size));
+    return taxiInfoService.selectPage(type, new Page<>(page, size));
   }
-
-
+  @ApiOperation(value = "不分页获取拼车信息", notes = "不分页获取拼车信息")
+  @PostMapping("/selectList")
+  public RetResult selectList(Boolean type) {
+    return taxiInfoService.selectList(type);
+  }
 }

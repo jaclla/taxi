@@ -11,4 +11,6 @@ public interface TaxiInfoService extends IService<TaxiInfo> {
   RetResult insert(TaxiInfo record);
 
   RetResult selectPage(Boolean type, Page<TaxiInfo> objectPage);
+
+  RetResult selectList(Boolean type);
 }
