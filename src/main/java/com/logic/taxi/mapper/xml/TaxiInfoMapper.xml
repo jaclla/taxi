@@ -6,15 +6,20 @@
     resultType="com.logic.taxi.bean.TaxiInfoBean">
     select
     info.id,
-    sdi.itemName as serviceType,
+    info.serviceType,
     info.price,
+    info.region,
     info.subscriptionDate,
     info.description,
     info.createTime
     from taxi.taxi_info info
-    left join taxi.sys_dictionary_item sdi on sdi.itemValue=info.serviceType
     where info.type=#{type}
-    and sdi.typeID=1
+    <if test="serviceType != null">
+      and info.serviceType=#{serviceType}
+    </if>
+    <if test="region != null">
+      and info.region=#{region}
+    </if>
     order by createTime desc
     limit 30
   </select>

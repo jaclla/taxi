@@ -12,6 +12,10 @@ public class TaxiInfoBean {
    */
   private String serviceType;
 
+  /**
+   * 区域
+   */
+  private String region;
 
   /**
    * 价格  必须是整数

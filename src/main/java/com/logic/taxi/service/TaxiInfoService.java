@@ -12,5 +12,5 @@ public interface TaxiInfoService extends IService<TaxiInfo> {
 
   RetResult selectPage(Boolean type, Page<TaxiInfo> objectPage);
 
-  RetResult selectList(Boolean type);
+  RetResult selectList(Boolean type, Integer serviceType, Integer region);
 }

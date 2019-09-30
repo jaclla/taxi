@@ -63,8 +63,16 @@ public class TaxiInfoController {
     return taxiInfoService.selectPage(type, new Page<>(page, size));
   }
   @ApiOperation(value = "不分页获取拼车信息", notes = "不分页获取拼车信息")
+  @ApiImplicitParams({
+      @ApiImplicitParam(name = "type", value = "类型",
+          dataType = "Integer", paramType = "query"),
+      @ApiImplicitParam(name = "serviceType", value = "服务类型",
+          dataType = "Integer", paramType = "query"),
+      @ApiImplicitParam(name = "region", value = "区域类型",
+          dataType = "Integer", paramType = "query")
+  })
   @PostMapping("/selectList")
-  public RetResult selectList(Boolean type) {
-    return taxiInfoService.selectList(type);
+  public RetResult selectList(Boolean type,Integer serviceType,Integer region) {
+    return taxiInfoService.selectList(type,serviceType,region);
   }
 }
