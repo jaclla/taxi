@@ -44,8 +44,8 @@ public class TaxiInfoController {
           dataType = "String", paramType = "query")
   })
   @PostMapping("/insert")
-  public RetResult insert(TaxiInfo taxiInfo) {
-    return taxiInfoService.insert(taxiInfo);
+  public RetResult insert(TaxiInfo taxiInfo,String token) {
+    return taxiInfoService.insert(taxiInfo,token);
   }
 
   @ApiOperation(value = "分页获取拼车信息", notes = "分页获取拼车信息")

@@ -2,6 +2,7 @@ package com.logic.taxi.service.impl;
 
 import static com.logic.taxi.utils.DateUtils.outTime;
 
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -29,7 +30,11 @@ public class TaxiInfoServiceImpl extends ServiceImpl<TaxiInfoMapper, TaxiInfo> i
   private SysDictionaryItemMapper sysDictionaryItemMapper;
 
   @Override
-  public RetResult insert(TaxiInfo record) {
+  public RetResult insert(TaxiInfo record, String token) {
+    if (StrUtil.isEmpty(token)){
+      return RetResponse.makeErrRsp("请先登录!");
+    }
+
     return RetResponse.makeOKRsp(taxiInfoMapper.insert(record));
   }
 

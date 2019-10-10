@@ -8,7 +8,7 @@ import com.logic.taxi.entity.TaxiInfo;
 public interface TaxiInfoService extends IService<TaxiInfo> {
 
 
-  RetResult insert(TaxiInfo record);
+  RetResult insert(TaxiInfo record, String token);
 
   RetResult selectPage(Boolean type, Page<TaxiInfo> objectPage);
 
