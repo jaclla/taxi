@@ -1,11 +1,13 @@
 package com.logic.taxi.bean;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 import lombok.Data;
 
 @Data
 public class TaxiInfoBean {
-  private Long id;
+
+  private String id;
 
   /**
    * 服务类型 applemusic
@@ -41,5 +43,15 @@ public class TaxiInfoBean {
    * 创建时间
    */
   private LocalDateTime createTime;
+
+  /**
+   * 隐私标签
+   */
+  private Boolean secrecyLabel;
+
+  /**
+   * 联系方式
+   */
+  private Map<String, String> info;
 
 }

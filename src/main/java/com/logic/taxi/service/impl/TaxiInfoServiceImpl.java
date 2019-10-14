@@ -11,12 +11,16 @@ import com.logic.taxi.core.ret.RetResponse;
 import com.logic.taxi.core.ret.RetResult;
 import com.logic.taxi.entity.SysDictionaryItem;
 import com.logic.taxi.entity.TaxiInfo;
+import com.logic.taxi.entity.UserInfo;
 import com.logic.taxi.mapper.SysDictionaryItemMapper;
 import com.logic.taxi.mapper.TaxiInfoMapper;
+import com.logic.taxi.mapper.UserInfoMapper;
 import com.logic.taxi.service.TaxiInfoService;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -28,13 +32,18 @@ public class TaxiInfoServiceImpl extends ServiceImpl<TaxiInfoMapper, TaxiInfo> i
   private TaxiInfoMapper taxiInfoMapper;
   @Resource
   private SysDictionaryItemMapper sysDictionaryItemMapper;
+  @Resource
+  private UserInfoMapper userInfoMapper;
 
   @Override
   public RetResult insert(TaxiInfo record, String token) {
-    if (StrUtil.isEmpty(token)){
+    if (StrUtil.isEmpty(token)) {
       return RetResponse.makeErrRsp("请先登录!");
     }
-
+    UserInfo hash = userInfoMapper.selectOne(new QueryWrapper<UserInfo>().eq("hash", token));
+    if (hash == null) {
+      return RetResponse.makeErrRsp("用户不存在或者已过期请重新登录!");
+    }
     return RetResponse.makeOKRsp(taxiInfoMapper.insert(record));
   }
 
@@ -47,11 +56,24 @@ public class TaxiInfoServiceImpl extends ServiceImpl<TaxiInfoMapper, TaxiInfo> i
 
   @Override
   public RetResult selectList(Boolean type, Integer serviceType, Integer region) {
-    List<TaxiInfoBean> list = taxiInfoMapper.findList(type,serviceType,region);
+    List<TaxiInfoBean> list = taxiInfoMapper.findList(type, serviceType, region);
     for (TaxiInfoBean taxiInfoBean : list) {
-      taxiInfoBean.setOutTime(outTime(LocalDateTime.now(ZoneId.of("Asia/Shanghai")), taxiInfoBean.getCreateTime()));
-      taxiInfoBean.setServiceType(sysDictionaryItemMapper.selectOne(new QueryWrapper<SysDictionaryItem>().eq("itemValue",taxiInfoBean.getServiceType()).eq("typeID", 1)).getItemname());
-      taxiInfoBean.setRegion(sysDictionaryItemMapper.selectOne(new QueryWrapper<SysDictionaryItem>().eq("itemValue",taxiInfoBean.getRegion()).eq("typeID", 2)).getItemname());
+      taxiInfoBean.setOutTime(
+          outTime(LocalDateTime.now(ZoneId.of("Asia/Shanghai")), taxiInfoBean.getCreateTime()));
+      taxiInfoBean.setServiceType(sysDictionaryItemMapper.selectOne(
+          new QueryWrapper<SysDictionaryItem>().eq("itemValue", taxiInfoBean.getServiceType())
+              .eq("typeID", 1)).getItemname());
+      taxiInfoBean.setRegion(sysDictionaryItemMapper.selectOne(
+          new QueryWrapper<SysDictionaryItem>().eq("itemValue", taxiInfoBean.getRegion())
+              .eq("typeID", 2)).getItemname());
+      if (!taxiInfoBean.getSecrecyLabel()) {
+        Map<String, String> map = new HashMap<>();
+        TaxiInfo taxiInfo = taxiInfoMapper.selectById(taxiInfoBean.getId());
+        map.put("tg", taxiInfo.getUsername());
+        map.put("email", taxiInfo.getEmail());
+        map.put("weChat", taxiInfo.getWechat());
+        taxiInfoBean.setInfo(map);
+      }
     }
     return RetResponse.makeOKRsp(list);
   }

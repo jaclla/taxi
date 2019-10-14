@@ -12,6 +12,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 public class TaxiInfo extends Model<TaxiInfo> {
+
   private static final long serialVersionUID = 1L;
 
   private Long id;
@@ -72,7 +73,11 @@ public class TaxiInfo extends Model<TaxiInfo> {
    */
   @TableField("wechat")
   private String wechat;
-
+  /**
+   * tg用户名
+   */
+  @TableField("username")
+  private String username;
   /**
    * 创建时间
    */
