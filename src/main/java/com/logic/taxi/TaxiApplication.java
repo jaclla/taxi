@@ -26,6 +26,8 @@ public class TaxiApplication {
 
 
   public static void main(String[] args) {
+    try {
+
       // Create the Authenticator that will return auth's parameters for proxy authentication
 //      Authenticator.setDefault(new Authenticator() {
 //        @Override
@@ -40,15 +42,14 @@ public class TaxiApplication {
       TelegramBotsApi botsApi = new TelegramBotsApi();
 
       // Set up Http proxy
-//      DefaultBotOptions botOptions = ApiContext.getInstance(DefaultBotOptions.class);
-
+      DefaultBotOptions botOptions = ApiContext.getInstance(DefaultBotOptions.class);
+//
 //      botOptions.setProxyHost("127.0.0.1");
-//      botOptions.setProxyPort(1080);
+//      botOptions.setProxyPort(10808);
       // Select proxy type: [HTTP|SOCKS4|SOCKS5] (default: NO_PROXY)
 //      botOptions.setProxyType(DefaultBotOptions.ProxyType.SOCKS5);
-    try {
       // Register your newly created AbilityBot
-      MyBot bot = new MyBot(BOT_TOKEN, BOT_NAME);
+      MyBot bot = new MyBot(BOT_TOKEN, BOT_NAME,botOptions);
 
       botsApi.registerBot(bot);
 

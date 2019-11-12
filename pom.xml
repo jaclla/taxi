@@ -14,11 +14,16 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>taxi</name>
   <description>Demo project for Spring Boot</description>
-
   <properties>
     <java.version>1.8</java.version>
   </properties>
-
+  <repositories>
+    <repository>
+      <id>aliyun</id>
+      <name>aliyun</name>
+      <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+    </repository>
+  </repositories>
   <dependencies>
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
