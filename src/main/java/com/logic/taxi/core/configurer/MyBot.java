@@ -11,8 +11,8 @@ import org.telegram.telegrambots.bots.DefaultBotOptions;
 
 public class MyBot extends AbilityBot {
 
-  public MyBot(String botToken, String botUsername,DefaultBotOptions botOptions) {
-    super(botToken, botUsername,botOptions);
+  public MyBot(String botToken, String botUsername) {
+    super(botToken, botUsername);
   }
 
   @Override

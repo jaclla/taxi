@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("auth")
+@RequestMapping("/api/auth")
 @Api(tags = {"权限认证"}, description = "UserInfoControler")
 public class UserInfoController {
 

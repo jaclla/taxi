@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("bot")
+@RequestMapping("/api/bot")
 @Api(tags = {"tg机器人"}, description = "tg机器人控制器")
 public class TelegramBotConrtroller {
 

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("taxiInfo")
+@RequestMapping("/api/taxiInfo")
 @Api(tags = {"拼车操作接口"}, description = "taxiInfoControler")
 public class TaxiInfoController {
 

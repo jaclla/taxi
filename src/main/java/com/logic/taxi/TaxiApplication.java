@@ -28,35 +28,24 @@ public class TaxiApplication {
   public static void main(String[] args) {
     try {
 
-      // Create the Authenticator that will return auth's parameters for proxy authentication
-//      Authenticator.setDefault(new Authenticator() {
-//        @Override
-//        protected PasswordAuthentication getPasswordAuthentication() {
-//          return new PasswordAuthentication(PROXY_USER, PROXY_PASSWORD.toCharArray());
-//        }
-//      });
-
       ApiContextInitializer.init();
 
       // Create the TelegramBotsApi object to register your bots
       TelegramBotsApi botsApi = new TelegramBotsApi();
 
       // Set up Http proxy
-      DefaultBotOptions botOptions = ApiContext.getInstance(DefaultBotOptions.class);
-//
+//      DefaultBotOptions botOptions = ApiContext.getInstance(DefaultBotOptions.class);
 //      botOptions.setProxyHost("127.0.0.1");
 //      botOptions.setProxyPort(10808);
       // Select proxy type: [HTTP|SOCKS4|SOCKS5] (default: NO_PROXY)
 //      botOptions.setProxyType(DefaultBotOptions.ProxyType.SOCKS5);
       // Register your newly created AbilityBot
-      MyBot bot = new MyBot(BOT_TOKEN, BOT_NAME,botOptions);
+      MyBot bot = new MyBot(BOT_TOKEN, BOT_NAME);
 
       botsApi.registerBot(bot);
-
+      SpringApplication.run(TaxiApplication.class, args);
     } catch (TelegramApiException e) {
       e.printStackTrace();
     }
-    SpringApplication.run(TaxiApplication.class, args);
   }
-
 }

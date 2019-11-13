@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Validated
-@RequestMapping("common")
+@RequestMapping("/api/common")
 @Api(tags = {"公共控制"}, description = "commonControler")
 public class CommonController  {
     @Resource
